@@ -3,812 +3,727 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're In — Panda</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Legal & Terms — Panda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #3DBE6C;
-    --bright: #b4ff78;
-    --dark: #1a3d28;
-    --black: #0a0a0a;
-    --white: #f8f8f4;
+    --green: #1a3a2a;
+    --green-mid: #2d5a3d;
+    --green-light: #4a8c5c;
+    --cream: #f8f5ef;
+    --cream-dark: #ede8de;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: #d4cfc5;
+    --accent: #c8e6c9;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--black);
-    color: var(--white);
     font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Header */
+  header {
+    background: var(--green);
+    padding: 20px 40px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-x: hidden;
+    justify-content: space-between;
   }
 
-  /* Background glow */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(61,190,108,0.15) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    max-width: 520px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* LOGO */
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 40px;
-    justify-content: center;
-  }
-
-  .logo-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .logo-text {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: var(--white);
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #fff;
     letter-spacing: -0.5px;
   }
 
-  /* CARD */
-  .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 24px;
-    padding: 48px 40px;
-    backdrop-filter: blur(10px);
-    animation: fadeUp 0.6s ease both;
-  }
+  .logo span { color: #7ecb8f; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* BADGE */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(180,255,120,0.1);
-    border: 1px solid rgba(180,255,120,0.25);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 12px;
+  nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 24px;
     font-weight: 500;
-    color: var(--bright);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
+    transition: color 0.2s;
   }
 
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--bright);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
+  nav a:hover { color: #fff; }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 36px;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-  }
-
-  h1 span { color: var(--green); }
-
-  .subtitle {
-    color: rgba(248,248,244,0.55);
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 32px;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-    margin: 28px 0;
-  }
-
-  /* INPUT */
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  label {
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(248,248,244,0.6);
-    letter-spacing: 0.2px;
-  }
-
-  input[type="email"], input[type="text"] {
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    padding: 14px 18px;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  input[type="email"]:focus, input[type="text"]:focus {
-    border-color: var(--green);
-    background: rgba(61,190,108,0.05);
-  }
-
-  input::placeholder { color: rgba(248,248,244,0.25); }
-
-  /* BUTTON */
-  .btn {
-    width: 100%;
-    padding: 15px 24px;
+  /* Hero */
+  .hero {
     background: var(--green);
-    color: var(--black);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    letter-spacing: -0.2px;
-  }
-
-  .btn:hover { background: var(--bright); }
-  .btn:active { transform: scale(0.98); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  .btn-secondary {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-  }
-
-  .btn-secondary:hover { background: rgba(255,255,255,0.05); }
-
-  /* REFERRAL LINK BOX */
-  .ref-box {
-    background: rgba(61,190,108,0.07);
-    border: 1px solid rgba(61,190,108,0.2);
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .ref-box:hover { background: rgba(61,190,108,0.12); }
-
-  .ref-url {
-    font-size: 13px;
-    color: var(--green);
-    font-weight: 500;
-    word-break: break-all;
-    flex: 1;
-  }
-
-  .copy-btn {
-    background: var(--green);
-    color: var(--black);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s;
-    flex-shrink: 0;
-  }
-
-  .copy-btn:hover { background: var(--bright); }
-  .copy-btn.copied { background: #2a9d5c; }
-
-  /* STATS */
-  .stats-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .stat-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 12px;
-    padding: 16px;
+    padding: 60px 40px 80px;
     text-align: center;
   }
 
-  .stat-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--bright);
-    line-height: 1;
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .fca-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 24px;
+    font-weight: 500;
+  }
+
+  .fca-badge::before {
+    content: '✓';
+    background: #7ecb8f;
+    color: var(--green);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* Nav tabs */
+  .tabs {
+    background: var(--green-mid);
+    padding: 0 40px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 20px;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .tab:hover, .tab.active {
+    color: #fff;
+    border-bottom-color: #7ecb8f;
+  }
+
+  /* Main content */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .section {
+    display: none;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  /* Key info box */
+  .key-info {
+    background: var(--green);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+
+  .key-info h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .info-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .info-item .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-bottom: 4px;
   }
 
-  .stat-label {
-    font-size: 11px;
-    color: rgba(248,248,244,0.4);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  .info-item .value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
   }
 
-  /* SHARE BUTTONS */
-  .share-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
+  /* Representative example */
+  .rep-example {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green-light);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: var(--text-muted);
   }
 
-  .share-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    transition: opacity 0.2s, transform 0.1s;
-    text-decoration: none;
-    color: white;
-  }
-
-  .share-btn:hover { opacity: 0.85; }
-  .share-btn:active { transform: scale(0.97); }
-  .share-whatsapp { background: #25D366; color: #000; }
-  .share-twitter { background: #000; border: 1px solid rgba(255,255,255,0.15); }
-
-  /* PROGRESS BAR */
-  .progress-wrap {
-    margin-bottom: 24px;
-  }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: rgba(248,248,244,0.4);
-    margin-bottom: 8px;
-  }
-
-  .progress-track {
-    height: 6px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green), var(--bright));
-    border-radius: 100px;
-    transition: width 1s ease;
-  }
-
-  /* REFERRAL INVITE VIEW */
-  .invite-header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .panda-emoji {
-    font-size: 56px;
-    margin-bottom: 16px;
+  .rep-example strong {
+    color: var(--text);
     display: block;
-    animation: bounce 2s infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  /* MINI FORM (referral invite page) */
-  .form-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  /* LOADING */
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: rgba(248,248,244,0.4);
-    font-size: 14px;
-    padding: 20px;
-  }
-
-  .spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(61,190,108,0.2);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .hidden { display: none !important; }
-
-  .error-msg {
-    color: #ff6b6b;
+    margin-bottom: 8px;
     font-size: 13px;
-    margin-top: 8px;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  .success-msg {
+  /* Content sections */
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
     color: var(--green);
-    font-size: 13px;
-    margin-top: 8px;
-    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 48px;
   }
 
-  /* HOW IT WORKS */
-  .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 28px;
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 28px 0 12px;
   }
 
-  .step {
+  p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  ul, ol {
+    margin: 12px 0 20px 20px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  li { margin-bottom: 8px; line-height: 1.7; }
+
+  /* Provider box */
+  .provider-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
     display: flex;
+    gap: 20px;
     align-items: flex-start;
-    gap: 14px;
   }
 
-  .step-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(61,190,108,0.15);
-    border: 1px solid rgba(61,190,108,0.3);
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 700;
-    font-family: 'Syne', sans-serif;
+  .provider-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--green);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    font-size: 20px;
     flex-shrink: 0;
-    margin-top: 1px;
   }
 
-  .step-text {
+  .provider-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .provider-info p {
     font-size: 14px;
-    color: rgba(248,248,244,0.7);
-    line-height: 1.5;
+    margin: 0;
   }
 
-  .step-text strong { color: var(--white); font-weight: 500; }
+  /* Warning box */
+  .warning {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #5d4037;
+    margin: 20px 0;
+  }
 
+  /* Divider */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* Footer */
   footer {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 12px;
-    color: rgba(248,248,244,0.2);
+    background: var(--green);
+    padding: 40px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
   }
 
-  @media (max-width: 480px) {
-    .card { padding: 32px 24px; }
-    h1 { font-size: 28px; }
-    .stats-row { grid-template-columns: 1fr 1fr; }
+  .footer-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  footer h4 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  footer a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: #fff; }
+
+  .footer-bottom {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  /* Debt help */
+  .debt-help {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .debt-help a {
+    display: inline;
+    margin: 0 8px 0 0;
+    color: #7ecb8f;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; }
+    .hero { padding: 40px 20px 60px; }
+    .hero h1 { font-size: 32px; }
+    .container { padding: 40px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .tabs { padding: 0 20px; }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- LOGO -->
-  <div class="logo">
-    <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="22" cy="22" r="22" fill="#1a3d28"/>
-      <!-- Panda face simplified SVG -->
-      <ellipse cx="22" cy="23" rx="13" ry="12" fill="#f8f8f4"/>
-      <ellipse cx="13" cy="14" rx="5" ry="5" fill="#0a0a0a"/>
-      <ellipse cx="31" cy="14" rx="5" ry="5" fill="#0a0a0a"/>
-      <ellipse cx="15" cy="20" rx="4" ry="3.5" fill="#0a0a0a"/>
-      <ellipse cx="29" cy="20" rx="4" ry="3.5" fill="#0a0a0a"/>
-      <circle cx="16" cy="19.5" r="1.5" fill="white"/>
-      <circle cx="30" cy="19.5" r="1.5" fill="white"/>
-      <ellipse cx="22" cy="26" rx="3" ry="2" fill="#0a0a0a" opacity="0.2"/>
-      <circle cx="22" cy="25.5" r="1.5" fill="#3DBE6C"/>
-    </svg>
-    <span class="logo-text">panda</span>
-  </div>
+<header>
+  <div class="logo">Panda<span>.</span></div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">How it works</a>
+    <a href="#">Legal</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-  <!-- ============================================ -->
-  <!-- VIEW 1: THANK YOU — get referral link        -->
-  <!-- ============================================ -->
-  <div id="view-thankyou" class="card hidden">
-    <div class="badge"><span class="badge-dot"></span> You're on the list</div>
-    <h1>You're in.<br><span>Now make it count.</span></h1>
-    <p class="subtitle">Get your unique referral link and move up the waitlist. Every friend you bring in bumps you closer to the front.</p>
-
-    <div class="divider"></div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>Enter your email</strong> — the one you signed up with</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Share your link</strong> with friends who go out in the UK</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>Move up the list</strong> — every referral counts</div>
-      </div>
-    </div>
-
-    <div class="input-group">
-      <label for="email-input">Your email address</label>
-      <input type="email" id="email-input" placeholder="your@email.com" />
-    </div>
-    <button class="btn" id="get-link-btn" onclick="getMyLink()">Get My Referral Link →</button>
-    <div id="thankyou-error" class="error-msg hidden"></div>
-    <div id="thankyou-loading" class="loading hidden"><div class="spinner"></div> Getting your link...</div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- VIEW 2: REFERRAL DASHBOARD                  -->
-  <!-- ============================================ -->
-  <div id="view-dashboard" class="card hidden">
-    <div class="badge"><span class="badge-dot"></span> Your referral link is live</div>
-    <h1>Share &<br><span>earn your place.</span></h1>
-    <p class="subtitle">Every friend who signs up via your link moves you higher. The top referrers get early access and exclusive perks.</p>
-
-    <div class="divider"></div>
-
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-number" id="ref-count">0</div>
-        <div class="stat-label">Friends referred</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" id="ref-position">—</div>
-        <div class="stat-label">Waitlist position</div>
-      </div>
-    </div>
-
-    <div class="progress-wrap">
-      <div class="progress-label">
-        <span>Progress to early access</span>
-        <span id="progress-label-text">0 / 5 referrals</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <label style="margin-bottom: 8px; display: block;">Your unique link — tap to copy</label>
-    <div class="ref-box" onclick="copyLink()">
-      <span class="ref-url" id="ref-url-display">pandaindustry.co/join?ref=...</span>
-      <button class="copy-btn" id="copy-btn">Copy</button>
-    </div>
-
-    <div class="share-row">
-      <a id="whatsapp-btn" class="share-btn share-whatsapp" href="#" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <a id="twitter-btn" class="share-btn share-twitter" href="#" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-        Post on X
-      </a>
-    </div>
-
-    <button class="btn btn-secondary" onclick="showThankyou()" style="font-size: 13px; padding: 12px;">← Use a different email</button>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- VIEW 3: INVITED BY A FRIEND                 -->
-  <!-- ============================================ -->
-  <div id="view-invited" class="card hidden">
-    <div class="invite-header">
-      <span class="panda-emoji">🐼</span>
-      <div class="badge" style="margin: 0 auto 16px;"><span class="badge-dot"></span> You've been invited</div>
-      <h1>Your friend thinks<br><span>you deserve better.</span></h1>
-    </div>
-    <p class="subtitle" style="text-align: center; margin-bottom: 28px;">Join the waitlist for Panda — the card built for your social life. £300 for hospitality spend, repaid over 3 months.</p>
-
-    <div class="form-fields">
-      <div class="input-group" style="margin: 0;">
-        <label>Your name</label>
-        <input type="text" id="invite-name" placeholder="First name" />
-      </div>
-      <div class="input-group" style="margin: 0;">
-        <label>Your email</label>
-        <input type="email" id="invite-email" placeholder="your@email.com" />
-      </div>
-    </div>
-
-    <button class="btn" id="invite-btn" onclick="submitInvite()">Join the Waitlist →</button>
-    <div id="invite-error" class="error-msg hidden"></div>
-    <div id="invite-loading" class="loading hidden"><div class="spinner"></div> Getting you in...</div>
-
-    <div class="divider"></div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">💳</div>
-        <div class="step-text"><strong>£300 hospitality credit</strong> — works at any UK restaurant, bar, or venue</div>
-      </div>
-      <div class="step">
-        <div class="step-num">📅</div>
-        <div class="step-text"><strong>Repay over 3 months</strong> — three equal payments, starting 30 days after</div>
-      </div>
-      <div class="step">
-        <div class="step-num">✅</div>
-        <div class="step-text"><strong>FCA aligned</strong> — built responsibly, for the way you actually live</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- VIEW 4: INVITE SUCCESS                      -->
-  <!-- ============================================ -->
-  <div id="view-invite-success" class="card hidden" style="text-align: center;">
-    <span class="panda-emoji">🎉</span>
-    <div class="badge" style="margin: 0 auto 20px;"><span class="badge-dot"></span> You're on the list</div>
-    <h1>Welcome to<br><span>the pride.</span></h1>
-    <p class="subtitle" style="margin-bottom: 28px;">You're on the Panda waitlist. We'll be in touch when your spot is ready — keep an eye on your inbox.</p>
-    <p class="subtitle" style="margin-bottom: 32px;">Now get your own referral link and move up faster 👇</p>
-    <button class="btn" onclick="goToReferral()">Get My Referral Link →</button>
-  </div>
-
-  <footer>pandaindustry.co · Smart-Social Finance · FCA Aligned</footer>
+<div class="hero">
+  <h1>Legal & Terms</h1>
+  <p>Everything you need to know about how Panda works, who provides your credit, and your rights as a customer.</p>
+  <div class="fca-badge">Credit provided by SteadyPay Limited — FCA Authorised (No. 789333)</div>
 </div>
 
+<div class="tabs">
+  <div class="tab active" onclick="showSection('credit')">Credit Terms</div>
+  <div class="tab" onclick="showSection('terms')">Terms of Use</div>
+  <div class="tab" onclick="showSection('privacy')">Privacy Policy</div>
+  <div class="tab" onclick="showSection('complaints')">Complaints</div>
+  <div class="tab" onclick="showSection('eligibility')">Eligibility</div>
+</div>
+
+<!-- CREDIT TERMS -->
+<div id="credit" class="section active">
+  <div class="container">
+
+    <div class="key-info">
+      <h2>Your Panda Credit at a Glance</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Credit Amount</div>
+          <div class="value">£300</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Repayment Term</div>
+          <div class="value">3 months</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Monthly Instalment</div>
+          <div class="value">£100</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Flat Fee</div>
+          <div class="value">£36 (12%)</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Total Repayable</div>
+          <div class="value">£336</div>
+        </div>
+        <div class="info-item">
+          <div class="label">First Payment Due</div>
+          <div class="value">Day 30</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rep-example">
+      <strong>Representative Example</strong>
+      Amount of credit: £300. Flat fee: £36 (12% of credit). Total amount repayable: £336. Repaid in 3 equal monthly instalments of £100, plus a one-off fee of £36 payable with the first instalment. First repayment due 30 days after funds are received. No interest charged. No hidden fees. Credit is subject to status and affordability checks.
+    </div>
+
+    <div class="warning">
+      ⚠️ <strong>Important:</strong> Failing to make repayments may negatively affect your credit rating. Only apply if you are confident you can meet the repayment schedule.
+    </div>
+
+    <h2>Who Provides Your Credit</h2>
+
+    <div class="provider-box">
+      <div class="provider-icon">S</div>
+      <div class="provider-info">
+        <h4>SteadyPay Limited — Credit Provider</h4>
+        <p>Your credit is provided by SteadyPay Limited, a company registered in England and Wales (No. 10713752), authorised and regulated by the Financial Conduct Authority (FCA No. 789333) for Consumer Credit and Credit Information Services. Registered office: 128 City Road, London, EC1V 2NX.</p>
+      </div>
+    </div>
+
+    <div class="provider-box">
+      <div class="provider-icon">P</div>
+      <div class="provider-info">
+        <h4>Panda Tech Industries Limited — Introducer</h4>
+        <p>Panda Tech Industries Limited (Company No. 15572716) operates as an Introducer Appointed Representative of SteadyPay Limited. Panda does not hold, lend, or advance any funds. Your credit agreement is directly between you and SteadyPay Limited. Registered office: 7 Sable Close, Hounslow, England, TW4 7PD.</p>
+      </div>
+    </div>
+
+    <h2>How the Credit Works</h2>
+
+    <h3>What is Panda credit?</h3>
+    <p>Panda offers eligible customers access to a £300 MCC-locked virtual Mastercard for use exclusively at hospitality venues — restaurants, bars, cafes, pubs and similar establishments. The credit is provided by SteadyPay Limited and repaid over three months.</p>
+
+    <h3>How is the credit used?</h3>
+    <p>Once approved, your £300 credit is loaded onto a virtual Mastercard issued via Equals Money. The card is locked to hospitality merchant category codes (MCCs) and cannot be used for any other category of spend. This ensures the credit is used only for its intended purpose.</p>
+
+    <h3>Repayment Schedule</h3>
+    <ul>
+      <li>Payment 1: £112 (£100 principal + £12 fee share) — due 30 days after funds received</li>
+      <li>Payment 2: £112 — due 60 days after funds received</li>
+      <li>Payment 3: £112 — due 90 days after funds received</li>
+    </ul>
+    <p>Repayments are collected by SteadyPay Limited via direct debit. You will be required to set up a direct debit mandate during the application process.</p>
+
+    <h3>Fees</h3>
+    <p>Panda charges a flat one-off fee of £36 (12% of the £300 credit) per credit cycle. There are no interest charges, no rollover fees, and no hidden costs. The fee is payable alongside your repayments as set out above.</p>
+
+    <h3>Late or Missed Payments</h3>
+    <p>If you miss a repayment, SteadyPay Limited may report this to credit reference agencies, which may negatively affect your credit score. If you are struggling to make repayments, please contact SteadyPay directly at <a href="mailto:support@steadypay.co">support@steadypay.co</a> as soon as possible.</p>
+
+    <h3>Your Right to Withdraw</h3>
+    <p>You have the right to withdraw from your credit agreement within 14 days of entering into it, without giving any reason. To exercise this right, contact SteadyPay Limited at <a href="mailto:support@steadypay.co">support@steadypay.co</a>. You will be required to repay the credit in full within 30 days of giving notice of withdrawal.</p>
+
+    <h3>Credit Checks & Affordability</h3>
+    <p>All credit is subject to status. SteadyPay Limited will carry out identity verification, credit reference checks, and affordability assessments before approving your application. Panda does not make credit decisions — all decisions are made by SteadyPay Limited.</p>
+
+  </div>
+</div>
+
+<!-- TERMS OF USE -->
+<div id="terms" class="section">
+  <div class="container">
+
+    <h2>Terms of Use</h2>
+    <p><em>Last updated: April 2026. Version 1.0</em></p>
+
+    <h3>1. About Panda</h3>
+    <p>The Panda platform (including the Panda app and website at pandaindustry.co) is operated by Panda Tech Industries Limited, a company registered in England and Wales (No. 15572716). Registered office: 7 Sable Close, Hounslow, England, TW4 7PD. Contact: <a href="mailto:duncan@pandaindustry.co">duncan@pandaindustry.co</a></p>
+
+    <h3>2. Acceptance of Terms</h3>
+    <p>By accessing or using Panda, you confirm that you accept these terms and agree to comply with them. If you do not agree, you must not use our platform.</p>
+
+    <h3>3. Eligibility</h3>
+    <p>To use Panda you must be: (a) aged 18 or over; (b) a resident of the United Kingdom; (c) able to enter into legally binding agreements; and (d) approved by SteadyPay Limited following their credit and affordability assessments.</p>
+
+    <h3>4. The Panda Service</h3>
+    <p>Panda provides a platform through which eligible users can access hospitality credit, discover venues, browse menus, make reservations and search for dining and social experiences. The credit product offered through Panda is provided by SteadyPay Limited. Panda does not provide credit directly and is not a lender.</p>
+
+    <h3>5. Your Account</h3>
+    <p>You are responsible for maintaining the confidentiality of your account credentials. You must notify us immediately if you believe your account has been compromised. You may not create more than one account or transfer your account to another person.</p>
+
+    <h3>6. Acceptable Use</h3>
+    <p>You agree not to use the Panda platform:</p>
+    <ul>
+      <li>For any unlawful purpose or in breach of any applicable law or regulation</li>
+      <li>To submit false, inaccurate or misleading information</li>
+      <li>To interfere with or disrupt the platform or servers</li>
+      <li>To attempt to gain unauthorised access to any part of the platform</li>
+      <li>In any way that could harm other users, third parties, or Panda's reputation</li>
+    </ul>
+
+    <h3>7. Intellectual Property</h3>
+    <p>All content, branding, design and technology on the Panda platform is owned by or licensed to Panda Tech Industries Limited. You may not reproduce, copy or distribute any part of the platform without our prior written consent.</p>
+
+    <h3>8. Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law, Panda excludes liability for any indirect or consequential loss arising from your use of the platform. Panda's liability in connection with the credit product is limited to our role as an Introducer Appointed Representative — SteadyPay Limited bears all liability as the regulated credit provider.</p>
+
+    <h3>9. Changes to These Terms</h3>
+    <p>We may update these terms from time to time. Continued use of the platform following any update constitutes acceptance of the revised terms.</p>
+
+    <h3>10. Governing Law</h3>
+    <p>These terms are governed by English law. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+  </div>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div id="privacy" class="section">
+  <div class="container">
+
+    <h2>Privacy Policy</h2>
+    <p><em>Last updated: April 2026. Version 1.0</em></p>
+
+    <h3>1. Who We Are</h3>
+    <p>Panda Tech Industries Limited ("Panda", "we", "us") is the data controller for information collected through the Panda platform. Company No. 15572716. Registered office: 7 Sable Close, Hounslow, England, TW4 7PD.</p>
+    <p>SteadyPay Limited acts as a separate data controller for information processed in connection with your credit agreement. Their privacy policy is available at <a href="https://steadypay.co/privacy-policy" target="_blank">steadypay.co/privacy-policy</a>.</p>
+
+    <h3>2. What Data We Collect</h3>
+    <ul>
+      <li>Identity information: name, date of birth, address</li>
+      <li>Contact information: email address, phone number</li>
+      <li>Financial information: bank account details (processed by SteadyPay)</li>
+      <li>Usage data: how you interact with the Panda platform</li>
+      <li>Transaction data: hospitality spend data captured via MCC</li>
+      <li>Device data: IP address, device type, browser type</li>
+    </ul>
+
+    <h3>3. How We Use Your Data</h3>
+    <ul>
+      <li>To provide and operate the Panda platform</li>
+      <li>To facilitate your credit application with SteadyPay Limited</li>
+      <li>To personalise your venue discovery experience</li>
+      <li>To communicate with you about your account</li>
+      <li>To comply with our legal and regulatory obligations</li>
+      <li>To improve and develop the platform</li>
+    </ul>
+
+    <h3>4. Legal Basis for Processing</h3>
+    <p>We process your data on the basis of: (a) performance of a contract; (b) compliance with legal obligations; (c) our legitimate interests in operating and improving the platform; and (d) your consent where required.</p>
+
+    <h3>5. Data Sharing</h3>
+    <p>We share your data with SteadyPay Limited for credit assessment and servicing purposes, and with Equals Money for card issuance. We do not sell your personal data to third parties. We may share data with service providers who support the operation of the platform, subject to confidentiality obligations.</p>
+
+    <h3>6. Data Retention</h3>
+    <p>We retain your data for as long as your account is active and for a period thereafter as required by law or regulation, typically six years.</p>
+
+    <h3>7. Your Rights</h3>
+    <p>You have the right to: access your data; correct inaccurate data; request deletion of your data (subject to legal obligations); object to processing; and data portability. To exercise any of these rights, contact us at <a href="mailto:duncan@pandaindustry.co">duncan@pandaindustry.co</a>.</p>
+
+    <h3>8. Cookies</h3>
+    <p>We use essential cookies to operate the platform and analytical cookies to understand usage. You can manage cookie preferences in your browser settings.</p>
+
+    <h3>9. Contact</h3>
+    <p>For any privacy-related queries, contact us at <a href="mailto:duncan@pandaindustry.co">duncan@pandaindustry.co</a>.</p>
+
+  </div>
+</div>
+
+<!-- COMPLAINTS -->
+<div id="complaints" class="section">
+  <div class="container">
+
+    <h2>Complaints Procedure</h2>
+    <p>We take all complaints seriously. This page explains how to raise a concern and what you can expect from us.</p>
+
+    <h3>Step 1 — Contact Panda</h3>
+    <p>If you have a complaint about the Panda platform (venue discovery, app functionality, or your account), please contact us first:</p>
+    <div class="provider-box">
+      <div class="provider-icon">📧</div>
+      <div class="provider-info">
+        <h4>Panda Tech Industries Limited</h4>
+        <p>Email: <a href="mailto:duncan@pandaindustry.co">duncan@pandaindustry.co</a><br>
+        We aim to acknowledge all complaints within 5 business days and provide a full response within 8 weeks.</p>
+      </div>
+    </div>
+
+    <h3>Step 2 — Contact SteadyPay (Credit Complaints)</h3>
+    <p>If your complaint relates to the credit product — including approval decisions, repayment issues, or charges — please contact SteadyPay Limited directly:</p>
+    <div class="provider-box">
+      <div class="provider-icon">S</div>
+      <div class="provider-info">
+        <h4>SteadyPay Limited</h4>
+        <p>Email: <a href="mailto:support@steadypay.co">support@steadypay.co</a><br>
+        128 City Road, London, EC1V 2NX<br>
+        SteadyPay is authorised and regulated by the FCA (No. 789333).</p>
+      </div>
+    </div>
+
+    <h3>Step 3 — Financial Ombudsman Service</h3>
+    <p>If your complaint about the credit product is not resolved to your satisfaction within 8 weeks, you may refer it to the Financial Ombudsman Service (FOS), free of charge:</p>
+    <ul>
+      <li>Website: <a href="https://www.financial-ombudsman.org.uk" target="_blank">financial-ombudsman.org.uk</a></li>
+      <li>Phone: 0800 023 4567</li>
+      <li>Post: Financial Ombudsman Service, Exchange Tower, London, E14 9SR</li>
+    </ul>
+
+    <h3>Consumer Duty</h3>
+    <p>Panda and SteadyPay Limited are committed to compliance with the FCA's Consumer Duty. This means we are committed to delivering good outcomes for customers, acting in your best interests, and ensuring our products and communications are clear, fair and not misleading.</p>
+
+  </div>
+</div>
+
+<!-- ELIGIBILITY -->
+<div id="eligibility" class="section">
+  <div class="container">
+
+    <h2>Eligibility Criteria</h2>
+    <p>To apply for Panda credit, you must meet all of the following criteria:</p>
+
+    <div class="key-info">
+      <h2>Am I Eligible?</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Age</div>
+          <div class="value">18–30 years old</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Residency</div>
+          <div class="value">UK resident</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Bank Account</div>
+          <div class="value">UK bank account required</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Credit Check</div>
+          <div class="value">Subject to SteadyPay approval</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Full Eligibility Requirements</h3>
+    <ul>
+      <li>You must be aged 18 or over (Panda's target demographic is 18–30)</li>
+      <li>You must be a UK resident with a UK address</li>
+      <li>You must hold a valid UK bank account</li>
+      <li>You must pass SteadyPay's identity verification (KYC) checks</li>
+      <li>You must pass SteadyPay's anti-money laundering (AML) checks</li>
+      <li>You must pass SteadyPay's affordability assessment</li>
+      <li>You must not be subject to a current debt relief order, individual voluntary arrangement (IVA), or bankruptcy order</li>
+    </ul>
+
+    <h3>Credit Decisions</h3>
+    <p>All credit decisions are made by SteadyPay Limited, not by Panda. Panda does not influence credit decisions. SteadyPay may decline your application if you do not meet their credit or affordability criteria. You have the right to request a review of any declined decision directly with SteadyPay.</p>
+
+    <h3>Responsible Lending</h3>
+    <p>Panda and SteadyPay are committed to responsible lending. We encourage you to only apply for credit if you are confident in your ability to meet repayments. If you are experiencing financial difficulty, please contact SteadyPay before applying.</p>
+
+    <div class="warning">
+      ⚠️ <strong>Credit is subject to status.</strong> Panda credit is not guaranteed. SteadyPay Limited reserves the right to decline any application that does not meet their credit or affordability criteria.
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="font-family:'DM Serif Display',serif;font-size:24px;color:#fff;margin-bottom:12px;">Panda<span style="color:#7ecb8f;">.</span></div>
+      <p>Panda Tech Industries Limited is an Introducer Appointed Representative of SteadyPay Limited, which is authorised and regulated by the Financial Conduct Authority (No. 789333).</p>
+      <p style="margin-top:8px;">Panda Tech Industries Limited. Company No. 15572716. Registered in England and Wales.</p>
+      <div class="debt-help">
+        Need help with debt? Visit: 
+        <a href="https://nationaldebtline.org" target="_blank">nationaldebtline.org</a>
+        <a href="https://moneyhelper.org.uk" target="_blank">moneyhelper.org.uk</a>
+        <a href="https://stepchange.org" target="_blank">stepchange.org</a>
+      </div>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#" onclick="showSection('credit')">Credit Terms</a>
+      <a href="#" onclick="showSection('terms')">Terms of Use</a>
+      <a href="#" onclick="showSection('privacy')">Privacy Policy</a>
+      <a href="#" onclick="showSection('complaints')">Complaints</a>
+      <a href="#" onclick="showSection('eligibility')">Eligibility</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:duncan@pandaindustry.co">duncan@pandaindustry.co</a>
+      <a href="https://pandaindustry.co" target="_blank">pandaindustry.co</a>
+      <h4 style="margin-top:20px;">Credit Provider</h4>
+      <a href="https://steadypay.co" target="_blank">steadypay.co</a>
+      <a href="mailto:support@steadypay.co">support@steadypay.co</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Panda credit is provided by SteadyPay Limited (FCA No. 789333). Panda Tech Industries Limited acts as an Introducer Appointed Representative only and does not provide credit. Credit is subject to status and affordability. Failing to make repayments may negatively affect your credit rating. © Panda Tech Industries Limited 2026.
+  </div>
+</footer>
+
 <script>
-  // ============================================
-  // CONFIG — replace with your deployed Apps Script URL
-  // ============================================
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxeK6zUIk_xbHxJmczwPmGK7eFrWRDvV5YZ4r1V58clpFaRxqZG3mrqFQlVs34NPlIV/exec';
-  const PAGE_BASE_URL = 'https://duncann38-sys.github.io/panda-referral/';
-
-  // ============================================
-  // STATE
-  // ============================================
-  let currentEmail = '';
-  let currentRefCode = '';
-  let referrerCode = '';
-
-  // ============================================
-  // INIT — detect if coming via referral link
-  // ============================================
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    referrerCode = params.get('ref') || '';
-    const emailParam = params.get('email') || '';
-
-    if (referrerCode) {
-      showView('view-invited');
-    } else if (emailParam) {
-      document.getElementById('email-input').value = emailParam;
-      showView('view-thankyou');
-      getMyLink();
-    } else {
-      showView('view-thankyou');
-    }
-  });
-
-  // ============================================
-  // SHOW/HIDE VIEWS
-  // ============================================
-  function showView(id) {
-    ['view-thankyou', 'view-dashboard', 'view-invited', 'view-invite-success'].forEach(v => {
-      document.getElementById(v).classList.add('hidden');
-    });
-    document.getElementById(id).classList.remove('hidden');
-  }
-
-  function showThankyou() { showView('view-thankyou'); }
-
-  // ============================================
-  // GET / GENERATE REFERRAL LINK
-  // ============================================
-  async function getMyLink() {
-    const email = document.getElementById('email-input').value.trim();
-    const errEl = document.getElementById('thankyou-error');
-    const loadEl = document.getElementById('thankyou-loading');
-    const btn = document.getElementById('get-link-btn');
-
-    errEl.classList.add('hidden');
-
-    if (!email || !email.includes('@')) {
-      errEl.textContent = 'Please enter a valid email address.';
-      errEl.classList.remove('hidden');
-      return;
-    }
-
-    currentEmail = email;
-    btn.disabled = true;
-    loadEl.classList.remove('hidden');
-
-    try {
-      const res = await fetch(`${APPS_SCRIPT_URL}?action=register&email=${encodeURIComponent(email)}`);
-      const data = await res.json();
-
-      if (data.success) {
-        currentRefCode = data.code;
-        renderDashboard(data.referrals, data.position);
-        showView('view-dashboard');
-      } else {
-        errEl.textContent = data.error || 'Something went wrong. Try again.';
-        errEl.classList.remove('hidden');
-      }
-    } catch(e) {
-      errEl.textContent = 'Connection error. Please try again in a moment.';
-      errEl.classList.remove('hidden');
-    }
-
-    btn.disabled = false;
-    loadEl.classList.add('hidden');
-  }
-
-  // ============================================
-  // RENDER DASHBOARD
-  // ============================================
-  function renderDashboard(referrals, position) {
-    const refLink = `${PAGE_BASE_URL}?ref=${currentRefCode}`;
-    document.getElementById('ref-url-display').textContent = refLink;
-    document.getElementById('ref-count').textContent = referrals || 0;
-    document.getElementById('ref-position').textContent = position ? `#${position}` : '—';
-
-    const goal = 5;
-    const pct = Math.min(100, Math.round(((referrals || 0) / goal) * 100));
-    document.getElementById('progress-fill').style.width = `${pct}%`;
-    document.getElementById('progress-label-text').textContent = `${referrals || 0} / ${goal} referrals`;
-
-    const msg = encodeURIComponent(`🐼 I just joined Panda — the UK's first social finance card. £300 for restaurants, bars & venues, repaid over 3 months. Join the waitlist 👇 ${refLink}`);
-    document.getElementById('whatsapp-btn').href = `https://wa.me/?text=${msg}`;
-    document.getElementById('twitter-btn').href = `https://x.com/intent/tweet?text=${msg}`;
-  }
-
-  // ============================================
-  // COPY LINK
-  // ============================================
-  function copyLink() {
-    const refLink = `${PAGE_BASE_URL}?ref=${currentRefCode}`;
-    navigator.clipboard.writeText(refLink).then(() => {
-      const btn = document.getElementById('copy-btn');
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Copy';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  }
-
-  // ============================================
-  // SUBMIT INVITE FORM
-  // ============================================
-  async function submitInvite() {
-    const name = document.getElementById('invite-name').value.trim();
-    const email = document.getElementById('invite-email').value.trim();
-    const errEl = document.getElementById('invite-error');
-    const loadEl = document.getElementById('invite-loading');
-    const btn = document.getElementById('invite-btn');
-
-    errEl.classList.add('hidden');
-
-    if (!name) {
-      errEl.textContent = 'Please enter your name.';
-      errEl.classList.remove('hidden');
-      return;
-    }
-    if (!email || !email.includes('@')) {
-      errEl.textContent = 'Please enter a valid email address.';
-      errEl.classList.remove('hidden');
-      return;
-    }
-
-    currentEmail = email;
-    btn.disabled = true;
-    loadEl.classList.remove('hidden');
-
-    try {
-      const res = await fetch(`${APPS_SCRIPT_URL}?action=signup&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&ref=${encodeURIComponent(referrerCode)}`);
-      const data = await res.json();
-
-      if (data.success) {
-        showView('view-invite-success');
-      } else {
-        errEl.textContent = data.error || 'Something went wrong. Try again.';
-        errEl.classList.remove('hidden');
-      }
-    } catch(e) {
-      errEl.textContent = 'Connection error. Please try again in a moment.';
-      errEl.classList.remove('hidden');
-    }
-
-    btn.disabled = false;
-    loadEl.classList.add('hidden');
-  }
-
-  // ============================================
-  // GO TO REFERRAL AFTER INVITE SUCCESS
-  // ============================================
-  function goToReferral() {
-    document.getElementById('email-input').value = currentEmail;
-    showView('view-thankyou');
-    getMyLink();
-  }
-
-  // ============================================
-  // ENTER KEY SUPPORT
-  // ============================================
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const tv = document.getElementById('view-thankyou');
-      const iv = document.getElementById('view-invited');
-      if (!tv.classList.contains('hidden')) getMyLink();
-      if (!iv.classList.contains('hidden')) submitInvite();
-    }
-  });
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = ['credit','terms','privacy','complaints','eligibility'];
+  document.querySelectorAll('.tab')[tabs.indexOf(id)].classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 </script>
+
 </body>
 </html>
